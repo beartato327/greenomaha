@@ -1,7 +1,7 @@
 <template>
   <v-app-bar
   color="green"
-  elevation="7"
+  elevation="3"
   flat
 >
 <!-- <v-app-bar-nav-icon></v-app-bar-nav-icon>
