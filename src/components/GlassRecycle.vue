@@ -1,6 +1,6 @@
 <template>
   <v-expansion-panel>
-        <v-expansion-panel-header class="text-h5 purple--text"
+        <v-expansion-panel-header id="glass-exp-panel" class="text-h5 purple--text"
           >Glass Recycling<v-icon color="purple"
             >mdi-bottle-soda</v-icon
           ></v-expansion-panel-header
