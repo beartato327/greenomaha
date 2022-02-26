@@ -10,8 +10,10 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "cypress": "^9.4.1",
+    "firebase": "^9.6.7",
     "vue": "^2.6.11",
     "vue-router": "^3.5.3",
+    "vuefire": "^2.2.5",
     "vuetify": "^2.4.0"
   },
   "devDependencies": {
