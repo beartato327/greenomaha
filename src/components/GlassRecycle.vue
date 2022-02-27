@@ -48,9 +48,12 @@
 </template>
 
 <script>
+import {db} from '../firebase/db'
+import {collection, doc} from 'firebase/firestore'
 export default {
     data(){
         return{
+            glassSites:[],
             locations: [
                 {"site":"Far West Central", "address":"HyVee 1000 South 178th Street","hours":"Open Daily: 7AM – 7PM","description":"This site is located near 180th and Pacific","status":"TODO","reported":"TODO"},
                 {"site":"Westwood Plaza", "address":"12075 West Center Road","hours":"Open Daily: 7AM – 7PM","description":"This site is located behind a Taco Bell and in front of Baker's","status":"TODO","reported":"TODO"},
@@ -60,9 +63,16 @@ export default {
 methods: {
     submit: function () {
       console.log("you have clicked me");
+      const dbOutput = collection(db, 'glassSites')
+      const outputList = doc(dbOutput)
+      console.log(outputList)
     },
   },
+  firestore:{
+    glassSites: collection(db, 'glassSites')
+    },
 }
+
 </script>
 
 <style>
