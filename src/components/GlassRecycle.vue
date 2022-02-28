@@ -15,9 +15,9 @@
           <div>{{ location.hours }}</div></v-card-subtitle
         >
         <v-card-text>
-          <div>{{ location.description }}</div>
-          <div>Status:{{ location.status }}</div>
-          <div>Last reported:{{ location.reported }}</div>
+          <div>Description: {{ location.description }}</div>
+          <div>Status: {{ location.status }}</div>
+          <div>Last reported: {{ location.reported.toDate() }}</div>
         </v-card-text>
         <v-card-actions>
           <v-dialog transition="dialog-bottom-transition" max-width="600">
@@ -57,25 +57,6 @@ export default {
   data() {
     return {
       glassSites: [],
-      locations: [
-        {
-          site: "Far West Central",
-          address: "HyVee 1000 South 178th Street",
-          hours: "Open Daily: 7AM – 7PM",
-          description: "This site is located near 180th and Pacific",
-          status: "TODO",
-          reported: "TODO",
-        },
-        {
-          site: "Westwood Plaza",
-          address: "12075 West Center Road",
-          hours: "Open Daily: 7AM – 7PM",
-          description:
-            "This site is located behind a Taco Bell and in front of Baker's",
-          status: "TODO",
-          reported: "TODO",
-        },
-      ],
     };
   },
   created() {
