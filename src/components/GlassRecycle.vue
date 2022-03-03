@@ -30,7 +30,6 @@
               })
             }}
           </div>
-          <div>location: {{ location.id }}</div>
         </v-card-text>
         <v-card-actions>
           <CardFooter v-bind:location="location" />
