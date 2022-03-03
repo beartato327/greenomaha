@@ -6,6 +6,11 @@
           >Update Status</v-btn
         >
       </div>
+      <div v-else-if="location.type === 'styro'">
+        <v-btn text color="orange" v-bind="attrs" v-on="on"
+          >Update Status</v-btn
+        >
+      </div>
       <div v-else>
         <v-btn text color="green" v-bind="attrs" v-on="on">Update Status</v-btn>
       </div>
@@ -14,6 +19,9 @@
       <v-card>
         <div v-if="location.type === 'glass'">
           <v-toolbar color="purple" dark>Update Location Status</v-toolbar>
+        </div>
+        <div v-if="location.type === 'styro'">
+          <v-toolbar color="orange" dark>Update Location Status</v-toolbar>
         </div>
         <div v-else>
           <v-toolbar color="green" dark>Update Location Status</v-toolbar>
@@ -66,6 +74,9 @@ export default {
         var dbType = ''
         if(this.location.type === 'full'){
             dbType = "fullSites"
+        }
+        if(this.location.type === 'styro'){
+            dbType = "styroSites"
         }
         if(this.location.type === 'glass'){
             dbType = "glassSites"

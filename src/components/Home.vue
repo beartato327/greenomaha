@@ -3,6 +3,7 @@
     <v-expansion-panels accordion>
       <GlassRecycle />
       <FullRecycle />
+      <Styrofoam />
     </v-expansion-panels>
   </v-row>
 </template>
@@ -10,10 +11,12 @@
 <script>
 import GlassRecycle from "./GlassRecycle";
 import FullRecycle from "./FullRecycle";
+import Styrofoam from "./Styrofoam.vue"
 export default {
   components: {
     GlassRecycle,
-    FullRecycle
+    FullRecycle,
+    Styrofoam
   },
   data() {
     return {

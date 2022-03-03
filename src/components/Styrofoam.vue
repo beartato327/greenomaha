@@ -1,21 +1,21 @@
 <template>
   <v-expansion-panel>
-    <v-expansion-panel-header class="text-h5 green--text"
-      >Full Service Recycling<v-icon color="green"
-        >mdi-recycle</v-icon
+    <v-expansion-panel-header id="glass-exp-panel" class="text-h5 orange--text"
+      >Styrofoam Recycling<v-icon color="orange"
+        >mdi-food-takeout-box</v-icon
       ></v-expansion-panel-header
     >
     <v-expansion-panel-content>
       <Hefty />
-      <v-card v-for="(location, i) in fullSites" :key="i">
-        <v-card-title class="text-h5 green--text">
+      <v-card v-for="(location, i) in styroSites" :key="i">
+        <v-card-title class="text-h5 orange--text">
           {{ location.site }}
         </v-card-title>
         <v-card-subtitle
           ><div>{{ location.address }}</div>
           <div>{{ location.hours }}</div></v-card-subtitle
         >
-       <v-card-text>
+        <v-card-text>
           <div>Description: {{ location.description }}</div>
           <div>Status: {{ location.status }}</div>
           <div v-if="location.reported === null"></div>
@@ -33,7 +33,7 @@
           </div>
         </v-card-text>
         <v-card-actions>
-         <CardFooter  v-bind:location="location"/>
+          <CardFooter v-bind:location="location" />
         </v-card-actions>
       </v-card>
     </v-expansion-panel-content>
@@ -44,7 +44,7 @@
 import { db } from "../firebase/db";
 import { collection, onSnapshot } from "firebase/firestore";
 import CardFooter from "./CardFooter.vue";
-import Hefty from './Hefty.vue'
+import Hefty from "./Hefty.vue"
 
 export default {
   components: {
@@ -56,18 +56,18 @@ export default {
   },
   data() {
     return {
-      fullSites: [],
+      styroSites: [],
     };
   },
   mounted() {
-    const colRef = collection(db, "fullSites");
+    const colRef = collection(db, "styroSites");
 
     onSnapshot(colRef, (snapshot) => {
-      const fullSites = [];
+      const styroSites = [];
       snapshot.docs.forEach((doc) => {
-        fullSites.push({ ...doc.data(), id: doc.id });
+        styroSites.push({ ...doc.data(), id: doc.id });
       });
-      this.fullSites = fullSites;
+      this.styroSites = styroSites;
     });
   },
 };
