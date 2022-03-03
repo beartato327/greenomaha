@@ -6,7 +6,7 @@
       ></v-expansion-panel-header
     >
     <v-expansion-panel-content>
-      <v-card v-for="location in glassSites" :key="location.site">
+      <v-card v-for="(location, i) in glassSites" :key="i">
         <v-card-title class="text-h5 purple--text">
           {{ location.site }}
         </v-card-title>
@@ -17,32 +17,23 @@
         <v-card-text>
           <div>Description: {{ location.description }}</div>
           <div>Status: {{ location.status }}</div>
-          <div>Last reported: {{ location.reported.toDate() }}</div>
+          <div v-if="location.reported === null"></div>
+          <div v-else>
+            Last reported:
+            {{
+              location.reported.toDate().toLocaleDateString([], {
+                month: "numeric",
+                day: "numeric",
+                year: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+              })
+            }}
+          </div>
+          <div>location: {{ location.id }}</div>
         </v-card-text>
         <v-card-actions>
-          <v-dialog transition="dialog-bottom-transition" max-width="600">
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn text color="purple" v-bind="attrs" v-on="on"
-                >Update Status</v-btn
-              >
-            </template>
-            <template v-slot:default="dialog">
-              <v-card>
-                <v-toolbar color="purple" dark
-                  >Update Location Status</v-toolbar
-                >
-                <v-card-text>
-                  <div class="text-h2 pa-12">Hello world!</div>
-                </v-card-text>
-                <v-card-actions class="justify-end">
-                  <v-btn text color="purple" @click="dialog.value = false"
-                    >Close</v-btn
-                  >
-                  <v-btn text color="purple" @click="submit">Submit</v-btn>
-                </v-card-actions>
-              </v-card>
-            </template>
-          </v-dialog>
+          <CardFooter v-bind:location="location" />
         </v-card-actions>
       </v-card>
     </v-expansion-panel-content>
@@ -51,32 +42,31 @@
 
 <script>
 import { db } from "../firebase/db";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
+import CardFooter from "./CardFooter.vue";
 
 export default {
+  components: {
+    CardFooter,
+  },
+  props: {
+    id: Object,
+  },
   data() {
     return {
       glassSites: [],
     };
   },
-  created() {
+  mounted() {
     const colRef = collection(db, "glassSites");
 
-    getDocs(colRef)
-      .then((snapshot) => {
-        snapshot.docs.forEach((doc) => {
-          this.glassSites.push({ ...doc.data(), id: doc.id });
-        });
-        console.log(this.glassSites);
-      })
-      .catch((err) => {
-        console.log(err.message);
+    onSnapshot(colRef, (snapshot) => {
+      const glassSites = [];
+      snapshot.docs.forEach((doc) => {
+        glassSites.push({ ...doc.data(), id: doc.id });
       });
-  },
-  methods: {
-    submit: function () {
-      console.log("you have clicked me");
-    },
+      this.glassSites = glassSites;
+    });
   },
 };
 </script>
