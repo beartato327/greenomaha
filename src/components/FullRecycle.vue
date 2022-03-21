@@ -15,25 +15,71 @@
           ><div>{{ location.address }}</div>
           <div>{{ location.hours }}</div></v-card-subtitle
         >
-       <v-card-text>
+        <v-card-text>
           <div>Description: {{ location.description }}</div>
-          <div>Status: {{ location.status }}</div>
-          <div v-if="location.reported === null"></div>
-          <div v-else>
-            Last reported:
-            {{
-              location.reported.toDate().toLocaleDateString([], {
-                month: "numeric",
-                day: "numeric",
-                year: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
-              })
-            }}
+          <br />
+          <div>Closest to the entrance is the first bin</div>
+          <div class="text-subtitle-2">Recycle Bins: </div>
+          <div v-for="(number, x) in location.recycleBins" :key="x">
+            <v-list-item three-line>
+              <v-list-item-content>
+                <v-list-item-title class="text-body-2"
+                  >Bin Number: {{ x }}</v-list-item-title
+                >
+                <v-list-item-subtitle>
+                  Status: {{ number.status }}
+                </v-list-item-subtitle>
+                <v-list-item-subtitle
+                  v-if="number.reported === null"
+                ></v-list-item-subtitle>
+                <v-list-item-subtitle v-else>
+                  Reported:
+                  {{
+                    number.reported.toDate().toLocaleDateString([], {
+                      month: "numeric",
+                      day: "numeric",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })
+                  }}
+                </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </div>
+          <br />
+          <div>Closest to the entrance is the first bin</div>
+          <div class="text-subtitle-2">Glass Bins:</div>
+          <div v-for="(bin, x) in location.glassBins" :key="x">
+            <v-list-item three-line>
+              <v-list-item-content>
+                <v-list-item-title class="text-body-2"
+                  >Bin Number: {{ parseInt(x) / 10 }}</v-list-item-title
+                >
+                <v-list-item-subtitle>
+                  Status: {{ bin.status }}
+                </v-list-item-subtitle>
+                <v-list-item-subtitle
+                  v-if="bin.reported === null"
+                ></v-list-item-subtitle>
+                <v-list-item-subtitle v-else>
+                  Reported:
+                  {{
+                    bin.reported.toDate().toLocaleDateString([], {
+                      month: "numeric",
+                      day: "numeric",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })
+                  }}
+                </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
           </div>
         </v-card-text>
         <v-card-actions>
-         <CardFooter  v-bind:location="location"/>
+          <CardFooterFull v-bind:location="location" />
         </v-card-actions>
       </v-card>
     </v-expansion-panel-content>
@@ -43,12 +89,12 @@
 <script>
 import { db } from "../firebase/db";
 import { collection, onSnapshot } from "firebase/firestore";
-import CardFooter from "./CardFooter.vue";
-import Hefty from './Hefty.vue'
+import CardFooterFull from "./CardFooterFull.vue";
+import Hefty from "./Hefty.vue";
 
 export default {
   components: {
-    CardFooter,
+    CardFooterFull,
     Hefty,
   },
   props: {
