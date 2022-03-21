@@ -27,7 +27,7 @@
           <v-toolbar color="green" dark>Update Location Status</v-toolbar>
         </div>
         <v-card-text>
-          <div class="text-h5 px-12 pt-8">
+          <div class="text-h5 px-12 pt-8 text-center">
             Please mark the current status of the site
           </div>
         </v-card-text>
@@ -159,4 +159,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@media screen and (max-width: 599px) {
+  .v-dialog{
+    margin: 0;
+  }
+}
+</style>
