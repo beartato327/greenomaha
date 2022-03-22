@@ -38,7 +38,7 @@
             :key="x"
             v-model="toggle_recycle_none"
           >
-            <v-btn :value="x"> {{ x }} </v-btn>
+            <v-btn @click="recycleToggle(x)" :value="x"> {{ x }} </v-btn>
           </v-btn-toggle>
         </div>
         <div class="text-center pb-5">
@@ -48,7 +48,7 @@
             :key="y"
             v-model="toggle_glass_none"
           >
-            <v-btn :value="y"> {{ parseInt(y) / 10 }} </v-btn>
+            <v-btn @click="recycleToggle(y)" :value="y"> {{ parseInt(y) / 10 }} </v-btn>
           </v-btn-toggle>
         </div>
         <v-card-actions class="justify-center pb-4">
@@ -106,15 +106,16 @@ export default {
   created() {
     console.log(this.location);
   },
-  watch: {
-    toggle_recycle_none(val) {
-      console.log(val);
-    },
-    toggle_glass_none(val) {
-      console.log(val);
-    },
-  },
   methods: {
+    recycleToggle: function(val){
+      if(parseInt(val) < 10){
+        this.toggle_recycle_none = val;
+        this.toggle_glass_none = null;
+      }else{
+        this.toggle_recycle_none = null;
+      this.toggle_glass_none = val;
+      }
+    },
     submit: function (status) {
       var dbType = "";
       if (this.location.type === "full") {

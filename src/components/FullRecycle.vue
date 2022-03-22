@@ -33,7 +33,7 @@
                   v-if="number.reported === null"
                 ></v-list-item-subtitle>
                 <v-list-item-subtitle v-else>
-                  Reported:
+                  Last Reported At:
                   {{
                     number.reported.toDate().toLocaleDateString([], {
                       month: "numeric",
@@ -63,7 +63,7 @@
                   v-if="bin.reported === null"
                 ></v-list-item-subtitle>
                 <v-list-item-subtitle v-else>
-                  Reported:
+                  Last Reported At: 
                   {{
                     bin.reported.toDate().toLocaleDateString([], {
                       month: "numeric",

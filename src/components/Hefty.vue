@@ -12,9 +12,7 @@
           <a
             href="https://www.hefty.com/products/hefty-energybag/energybag-communities/nebraska/greater-omaha-program"
             >here</a
-          >. Hefty Enery Bags are only accepted through city recycling and not
-          recycling sites, please do not drop these off at recyling locations.
-          To see a list of what is accepted by Hefty click the button below.
+          >. To see a list of what is accepted by Hefty click the button below.
         </v-card-text>
         <v-card-actions> 
             <v-btn raised class="white--text" href="https://www.hefty.com/products/hefty-energybag/how-energybag-program-works" color="orange">More Info</v-btn>

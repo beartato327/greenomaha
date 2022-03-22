@@ -11,17 +11,32 @@
     </v-app-bar>
     <v-app-bar height="40%" text>
       <v-toolbar-title id="subMenu"
-        ><v-btn id="subMenuBtn" class="green--text">Who We Are</v-btn
-        ><v-btn id="subMenuBtn" class="green--text"
+        ><v-btn @click.stop="showAbout = true" id="subMenuBtn" class="green--text" plain>Who We Are</v-btn
+        ><v-btn @click.stop="showContact = true" id="subMenuBtn" class="green--text" plain
           >Contact</v-btn
         ></v-toolbar-title
       >
     </v-app-bar>
+    <About v-model="showAbout"/>
+    <Contact v-model="showContact"/>
   </div>
 </template>
 
 <script>
-export default {};
+import About from './About.vue'
+import Contact from './Contact.vue'
+export default {
+  components:{
+    About,
+    Contact,
+  },
+  data(){
+    return{
+      showAbout: false,
+      showContact: false,
+    }
+  }
+};
 </script>
 
 <style>
@@ -35,5 +50,9 @@ export default {};
 #subMenu {
   display: block;
   margin: 0 auto;
+}
+
+.v-btn--plain:not(.v-btn--active):not(.v-btn--loading):not(:focus):not(:hover) .v-btn__content{
+  opacity: 1;
 }
 </style>
