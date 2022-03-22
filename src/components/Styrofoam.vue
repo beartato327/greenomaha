@@ -1,6 +1,6 @@
 <template>
   <v-expansion-panel>
-    <v-expansion-panel-header id="glass-exp-panel" class="text-h5 orange--text"
+    <v-expansion-panel-header id="styro-exp-panel" class="text-h5 orange--text"
       >Styrofoam Recycling<v-icon color="orange"
         >mdi-food-takeout-box</v-icon
       ></v-expansion-panel-header
@@ -73,4 +73,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#styro-exp-panel:hover{
+  background-color: #FFF3E0;
+}
+</style>

@@ -26,6 +26,7 @@
             Next feature update:
             <ul>
                 <li>Automated emails to the city when bins are reported 75% or higer</li>
+                <li>Provide accessbility features to the site</li>
             </ul>
         </v-card-text>
       </v-card>

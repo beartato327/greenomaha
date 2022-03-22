@@ -70,4 +70,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#glass-exp-panel:hover {
+ background-color: #F3E5F5;
+}
+</style>
