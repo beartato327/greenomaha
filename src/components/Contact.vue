@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" hide-overlay transition="dialog-top-transition" max-width="600px" :fullscreen="$vuetify.breakpoint.xsOnly">
+  <v-dialog v-model="dialog" hide-overlay transition="dialog-bottom-transition" max-width="600px" :fullscreen="$vuetify.breakpoint.xsOnly">
     <v-card>
         <v-toolbar
           dark

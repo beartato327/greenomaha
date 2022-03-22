@@ -11,8 +11,8 @@
     </v-app-bar>
     <v-app-bar height="40%" text>
       <v-toolbar-title id="subMenu"
-        ><v-btn @click.stop="showAbout = true" id="subMenuBtn" class="green--text" plain>Who We Are</v-btn
-        ><v-btn @click.stop="showContact = true" id="subMenuBtn" class="green--text" plain
+        ><v-btn @click.stop="showAbout = true, showContact = false" id="subMenuBtn" class="green--text" plain>Who We Are</v-btn
+        ><v-btn @click.stop="showContact = true, showAbout = false" id="subMenuBtn" class="green--text" plain
           >Contact</v-btn
         ></v-toolbar-title
       >
@@ -35,7 +35,7 @@ export default {
       showAbout: false,
       showContact: false,
     }
-  }
+  },
 };
 </script>
 
