@@ -1,7 +1,7 @@
 <template>
   <v-card>
         <v-card-title class="text-h6 orange--text"
-          >Learn more about the Heft Energy Bag Program<v-icon color="orange"
+          >Learn more about the Hefty Energy Bag Program<v-icon color="orange"
             >mdi-lightning-bolt</v-icon
           ></v-card-title
         >

@@ -1,7 +1,7 @@
 <template>
   <v-expansion-panel>
     <v-expansion-panel-header id="recycle-exp-panel" class="text-h5 green--text"
-      >Full Service Recycling<v-icon color="green"
+      >Full Service Recycling<v-icon class="pl-2" color="green"
         >mdi-recycle</v-icon
       ></v-expansion-panel-header
     >
@@ -119,7 +119,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
 #recycle-exp-panel:hover{
   background-color: #E8F5E9;
 }

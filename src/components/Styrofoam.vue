@@ -1,7 +1,7 @@
 <template>
   <v-expansion-panel>
     <v-expansion-panel-header id="styro-exp-panel" class="text-h5 orange--text"
-      >Styrofoam Recycling<v-icon color="orange"
+      >Styrofoam Recycling<v-icon class="pl-2" color="orange"
         >mdi-food-takeout-box</v-icon
       ></v-expansion-panel-header
     >
