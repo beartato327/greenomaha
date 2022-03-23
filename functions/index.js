@@ -1,4 +1,5 @@
 const functions = require("firebase-functions");
+const sendgridAPI = functions.config().sendgrid.apikey;
 const admin = require("firebase-admin");
 const nodemailer = require("nodemailer");
 admin.initializeApp();
@@ -9,21 +10,22 @@ let transporter = nodemailer.createTransport({
   secure: false, // upgrade later with STARTTLS
   auth: {
     user: "apikey",
-    pass: "",
+    pass: sendgridAPI,
   },
 });
 
 exports.sendEmail = functions.https.onRequest((req, res) => {
-  //const email_from = req.query.email_from;
-  //const message = req.query.message;
-  const email_from = "recapurro@outlook.com"
-  const message = "This is a test message"
+  const email_from = req.query.email_from;
+  const message = req.query.message;
+  const name = req.query.name;
+ /*  const email_from = "recapurro@outlook.com"
+  const message = "This is a test message" */
 
   const mailOptions = {
     from: "Green Omaha <recapurro@outlook.com>",
     to: "recapurro327@gmail.com",
     subject: "Comment",
-    html: `${message} From ${email_from}`,
+    html: `${message} From ${name} - ${email_from}`,
   };
 
   transporter.sendMail(mailOptions, (err, info) => {

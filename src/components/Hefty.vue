@@ -12,7 +12,7 @@
           <a
             href="https://www.hefty.com/products/hefty-energybag/energybag-communities/nebraska/greater-omaha-program"
             >here</a
-          >. To see more information about the progra visit Hefty's website below.
+          >. To see more information about the program visit Hefty's website below.
         </v-card-text>
         <v-card-actions> 
             <v-btn raised class="white--text" href="https://www.hefty.com/products/hefty-energybag/how-energybag-program-works" color="orange">Hefty <v-icon small>mdi-lightning-bolt</v-icon></v-btn>
