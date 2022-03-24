@@ -18,14 +18,15 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
   const email_from = req.query.email_from;
   const message = req.query.message;
   const name = req.query.name;
- /*  const email_from = "recapurro@outlook.com"
-  const message = "This is a test message" */
 
   const mailOptions = {
-    from: "Green Omaha <recapurro@outlook.com>",
+    from: "Greener Omaha <recapurro@outlook.com>",
     to: "recapurro327@gmail.com",
     subject: "Comment",
-    html: `${message} From ${name} - ${email_from}`,
+    html: `
+    <h3>Comment:</h3>
+    <p>${message}</p>
+    <h5>From: ${name}| Reply to Email: ${email_from}</h5>`,
   };
 
   transporter.sendMail(mailOptions, (err, info) => {

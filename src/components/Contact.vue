@@ -8,7 +8,7 @@
   >
     <v-card>
       <v-toolbar dark color="teal lighten-1">
-        <v-btn icon dark @click="dialog = false">
+        <v-btn icon dark @click="dialog = false, resetForm()">
           <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-toolbar-title class="flex text-center">Contact Us</v-toolbar-title>
@@ -18,18 +18,13 @@
             <br /><br />
             While we get our email service set up please email us at <a href="mailto:support@greenomaha.something">support@greenomaha.something</a>
         </v-card-text> -->
-      <div v-if="show_contact" id="form">
-        <div class="pt-4" v-if="contact_notice != ''">
-          <v-alert color="red" shaped outlined type="error">
-            There was an error submitting your comment: {{ contact_notice }}
+      <div id="form">
+        <div id="alert-success" class="pt-4" v-if="show_success">
+          <v-alert color="green" shaped type="success">
+            Message was sent successfully!
           </v-alert>
         </div>
-        <v-form
-          @submit.prevent="sendContactMessage()"
-          ref="form"
-          v-model="valid"
-          lazy-validation
-        >
+        <v-form ref="form" v-model="valid" lazy-validation>
           <v-text-field
             v-model="name"
             :counter="20"
@@ -58,18 +53,11 @@
             :disabled="!valid"
             color="teal lighten-1"
             class="mr-4 white--text"
-            @click="validate"
+            @click="validate, sendContactMessage()"
           >
             Send
           </v-btn>
         </v-form>
-      </div>
-      <div v-else class="text-center">
-        <h2>We received your comment!</h2>
-        <h3>
-          Thank you for reaching out, we will attempt to respond in 24 hours if
-          there was question or request made.
-        </h3>
       </div>
     </v-card>
   </v-dialog>
@@ -79,7 +67,7 @@
 export default {
   data() {
     return {
-      show_contact: true,
+      show_success: false,
       contact_notice: "",
       valid: true,
       email: "",
@@ -106,10 +94,25 @@ export default {
     validate() {
       this.$refs.form.validate();
     },
-    sendConntactMessage(){
-      const url = `https://us-central1-greenomaha-137ec.cloudfunctions.net/sendEmail?name=${this.name}&email_from=${this.email}&message=${this.comment}`
-      
-    }
+    sendContactMessage() {
+      const url = `https://us-central1-greenomaha-137ec.cloudfunctions.net/sendEmail?name=${this.name}&email_from=${this.email}&message=${this.comment}`;
+      const requestOptions = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      fetch(url, requestOptions);
+      this.show_success = true;
+
+      setTimeout(() => {
+        this.show_success = false;
+        this.resetForm();
+      }, 3000);
+    },
+    resetForm() {
+      this.$refs.form.reset()
+    },
   },
   computed: {
     dialog: {
@@ -130,5 +133,10 @@ export default {
   width: 90%;
   text-align: center;
   padding-bottom: 15px;
+}
+
+#alert-success {
+  margin: auto;
+  width: 50%;
 }
 </style>
