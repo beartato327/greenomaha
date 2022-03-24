@@ -3,7 +3,7 @@
     v-model="dialog"
     @input="resetForm"
     hide-overlay
-    transition="dialog-bottom-transition"
+    transition="scale-transition"
     max-width="600px"
     :fullscreen="$vuetify.breakpoint.xsOnly"
   >

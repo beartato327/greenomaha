@@ -74,4 +74,10 @@ export default {
 #glass-exp-panel:hover {
  background-color: #F3E5F5;
 }
+
+@media screen and (min-width: 600px) {
+  .v-expansion-panel {
+    max-width: 66.66%;
+  }
+}
 </style>

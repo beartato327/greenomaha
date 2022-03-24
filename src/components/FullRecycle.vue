@@ -19,7 +19,7 @@
           <div>Description: {{ location.description }}</div>
           <br />
           <div>Closest to the entrance is the first bin</div>
-          <div class="text-subtitle-2">Recycle Bins: </div>
+          <div class="text-subtitle-2">Recycle Bins:</div>
           <div v-for="(number, x) in location.recycleBins" :key="x">
             <v-list-item three-line>
               <v-list-item-content>
@@ -63,7 +63,7 @@
                   v-if="bin.reported === null"
                 ></v-list-item-subtitle>
                 <v-list-item-subtitle v-else>
-                  Last Reported At: 
+                  Last Reported At:
                   {{
                     bin.reported.toDate().toLocaleDateString([], {
                       month: "numeric",
@@ -120,8 +120,13 @@ export default {
 </script>
 
 <style scoped>
+#recycle-exp-panel:hover {
+  background-color: #e8f5e9;
+}
 
-#recycle-exp-panel:hover{
-  background-color: #E8F5E9;
+@media screen and (min-width: 600px) {
+  .v-expansion-panel {
+    max-width: 66.66%;
+  }
 }
 </style>

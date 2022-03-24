@@ -77,4 +77,10 @@ export default {
 #styro-exp-panel:hover{
   background-color: #FFF3E0;
 }
+
+@media screen and (min-width: 600px) {
+  .v-expansion-panel {
+    max-width: 66.66%;
+  }
+}
 </style>
