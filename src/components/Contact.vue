@@ -1,6 +1,7 @@
 <template>
   <v-dialog
     v-model="dialog"
+    @input="resetForm"
     hide-overlay
     transition="dialog-bottom-transition"
     max-width="600px"
@@ -8,7 +9,7 @@
   >
     <v-card>
       <v-toolbar dark color="teal lighten-1">
-        <v-btn icon dark @click="dialog = false, resetForm()">
+        <v-btn icon dark @click="(dialog = false), resetForm()">
           <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-toolbar-title class="flex text-center">Contact Us</v-toolbar-title>
@@ -20,11 +21,17 @@
         </v-card-text> -->
       <div id="form">
         <div id="alert-success" class="pt-4" v-if="show_success">
-          <v-alert color="green" shaped type="success">
+          <v-alert dense color="green" shaped type="success">
             Message was sent successfully!
           </v-alert>
         </div>
-        <v-form ref="form" v-model="valid" lazy-validation>
+        <v-form
+          id="comment-form"
+          @submit.prevent="sendContactMessage"
+          ref="form"
+          v-model="valid"
+          lazy-validation
+        >
           <v-text-field
             v-model="name"
             :counter="20"
@@ -50,10 +57,12 @@
           ></v-textarea>
 
           <v-btn
+            form="comment-form"
+            type="submit"
             :disabled="!valid"
             color="teal lighten-1"
             class="mr-4 white--text"
-            @click="validate, sendContactMessage()"
+            @click="validate"
           >
             Send
           </v-btn>
@@ -104,14 +113,14 @@ export default {
       };
       fetch(url, requestOptions);
       this.show_success = true;
-
+      this.resetForm();
       setTimeout(() => {
         this.show_success = false;
         this.resetForm();
       }, 3000);
     },
     resetForm() {
-      this.$refs.form.reset()
+      this.$refs.form.reset();
     },
   },
   computed: {
@@ -137,6 +146,6 @@ export default {
 
 #alert-success {
   margin: auto;
-  width: 50%;
+  width: 75%;
 }
 </style>

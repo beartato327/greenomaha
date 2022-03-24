@@ -26,13 +26,13 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
     html: `
     <h3>Comment:</h3>
     <p>${message}</p>
-    <h5>From: ${name}| Reply to Email: ${email_from}</h5>`,
+    <h5>From: ${name} | Reply to Email: ${email_from}</h5>`,
   };
 
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
       console.log("there was an error");
-      res.send(err.toString());
+      res.send(err.toString(), info.toString());
     }
 
     res.send("Your message was submitted successfully!");
