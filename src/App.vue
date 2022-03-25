@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <v-main>
+      <PageLoader />
       <AppBar />
       <v-container id="container">
         <Home />
@@ -14,11 +15,13 @@
 import AppBar from "./components/AppBar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
+import PageLoader from "./components/PageLoader.vue";
 
 export default {
   name: "App",
 
   components: {
+    PageLoader,
     AppBar,
     Home,
     Footer,
