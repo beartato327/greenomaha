@@ -1,4 +1,5 @@
 <template>
+<v-expansion-panels class="pa-0 mt-1">
   <v-expansion-panel>
     <v-expansion-panel-header id="glass-exp-panel" class="text-h5 purple--text"
       >Glass Recycling<v-icon class="pl-2" color="purple"
@@ -37,6 +38,7 @@
       </v-card>
     </v-expansion-panel-content>
   </v-expansion-panel>
+</v-expansion-panels>
 </template>
 
 <script>
@@ -73,5 +75,11 @@ export default {
 <style>
 #glass-exp-panel:hover {
  background-color: #F3E5F5;
+}
+
+@media screen and (min-width: 600px) {
+  .v-expansion-panel {
+    max-width: 66.66%;
+  }
 }
 </style>

@@ -7,7 +7,7 @@
         >
         <v-card-text
           >The energy bag program is supported throughout the Greater Omaha
-          Area. You can purchase these bags from most grocery and home improvement stores, to see a
+          Area.<br> You can purchase these bags from most grocery and home improvement stores, to see a
           complete list click
           <a
             href="https://www.hefty.com/products/hefty-energybag/energybag-communities/nebraska/greater-omaha-program"

@@ -1,4 +1,5 @@
 <template>
+<v-expansion-panels class="pa-0 mt-1">
   <v-expansion-panel>
     <v-expansion-panel-header id="styro-exp-panel" class="text-h5 orange--text"
       >Styrofoam Recycling<v-icon class="pl-2" color="orange"
@@ -38,6 +39,7 @@
       </v-card>
     </v-expansion-panel-content>
   </v-expansion-panel>
+</v-expansion-panels>
 </template>
 
 <script>
@@ -76,5 +78,11 @@ export default {
 <style>
 #styro-exp-panel:hover{
   background-color: #FFF3E0;
+}
+
+@media screen and (min-width: 600px) {
+  .v-expansion-panel {
+    max-width: 66.66%;
+  }
 }
 </style>

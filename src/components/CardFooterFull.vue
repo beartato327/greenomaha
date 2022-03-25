@@ -1,5 +1,9 @@
 <template>
-  <v-dialog transition="dialog-bottom-transition" max-width="600">
+  <v-dialog
+    v-model="show"
+    transition="dialog-bottom-transition"
+    max-width="600"
+  >
     <template v-slot:activator="{ on, attrs }">
       <div v-if="location.type === 'glass'">
         <v-btn text color="purple" v-bind="attrs" v-on="on"
@@ -32,25 +36,41 @@
           </div>
         </v-card-text>
         <div class="text-center pb-5">
-          <p>Recycle Container</p>
+          <p class="primary white--text">Recycle Container</p>
           <v-btn-toggle
             v-for="(number, x) in location.recycleBins"
             :key="x"
             v-model="toggle_recycle_none"
           >
-            <v-btn @click="recycleToggle(x)" :value="x"> {{ x }} </v-btn>
+            <v-btn
+              id="recycle-btn"
+              class="pa-0 mx-1"
+              color="primary"
+              @click="recycleToggle(x)"
+              :value="x"
+            >
+              {{ x }}
+            </v-btn>
           </v-btn-toggle>
         </div>
         <div class="text-center pb-5">
-          <p>Glass Container</p>
+          <p class="purple white--text">Glass Container</p>
           <v-btn-toggle
             v-for="(bin, y) in location.glassBins"
             :key="y"
             v-model="toggle_glass_none"
           >
-            <v-btn @click="recycleToggle(y)" :value="y"> {{ parseInt(y) / 10 }} </v-btn>
+            <v-btn
+              id="glass-btn"
+              class="pa-0 mx-1 purple white--text"
+              @click="recycleToggle(y)"
+              :value="y"
+            >
+              {{ parseInt(y) / 10 }}
+            </v-btn>
           </v-btn-toggle>
         </div>
+        <v-divider class="green"></v-divider>
         <v-card-actions class="justify-center pb-4">
           <v-btn
             raised
@@ -96,6 +116,7 @@ export default {
   data() {
     return {
       status: ["Empty", "25%", "50%", "75%", "Full"],
+      show: false,
       toggle_recycle_none: null,
       toggle_glass_none: null,
     };
@@ -106,14 +127,22 @@ export default {
   created() {
     console.log(this.location);
   },
+  watch: {
+    show: function (newValue) {
+      if (!newValue) {
+        this.toggle_recycle_none = null;
+        this.toggle_glass_none = null;
+      }
+    },
+  },
   methods: {
-    recycleToggle: function(val){
-      if(parseInt(val) < 10){
+    recycleToggle: function (val) {
+      if (parseInt(val) < 10) {
         this.toggle_recycle_none = val;
         this.toggle_glass_none = null;
-      }else{
+      } else {
         this.toggle_recycle_none = null;
-      this.toggle_glass_none = val;
+        this.toggle_glass_none = val;
       }
     },
     submit: function (status) {
@@ -161,8 +190,20 @@ export default {
 </script>
 
 <style>
+.v-divider {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  border-width: 2px 0 0 0;
+}
+.v-btn-toggle > .v-btn.v-btn--active {
+  background-color: #0d6efd !important;
+  color: white !important;
+  opacity: 0.75;
+}
+
 @media screen and (max-width: 599px) {
-  .v-dialog{
+  .v-dialog {
     margin: 0;
   }
 }
