@@ -70,7 +70,7 @@
             </v-btn>
           </v-btn-toggle>
         </div>
-        <v-divider class="purple"></v-divider>
+        <v-divider class="green"></v-divider>
         <v-card-actions class="justify-center pb-4">
           <v-btn
             raised
@@ -190,6 +190,12 @@ export default {
 </script>
 
 <style>
+.v-divider {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  border-width: 2px 0 0 0;
+}
 .v-btn-toggle > .v-btn.v-btn--active {
   background-color: #0d6efd !important;
   color: white !important;

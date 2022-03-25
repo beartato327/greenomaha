@@ -6,13 +6,10 @@
           >Update Status</v-btn
         >
       </div>
-      <div v-else-if="location.type === 'styro'">
+      <div v-else>
         <v-btn text color="orange" v-bind="attrs" v-on="on"
           >Update Status</v-btn
         >
-      </div>
-      <div v-else>
-        <v-btn text color="green" v-bind="attrs" v-on="on">Update Status</v-btn>
       </div>
     </template>
     <template v-slot:default="dialog">
@@ -20,30 +17,42 @@
         <div v-if="location.type === 'glass'">
           <v-toolbar color="purple" dark>Update Location Status</v-toolbar>
         </div>
-        <div v-else-if="location.type === 'styro'">
-          <v-toolbar color="orange" dark>Update Location Status</v-toolbar>
-        </div>
         <div v-else>
-          <v-toolbar color="green" dark>Update Location Status</v-toolbar>
+          <v-toolbar color="orange" dark>Update Location Status</v-toolbar>
         </div>
         <v-card-text>
           <div class="text-h5 px-12 pt-8 text-center">
             Please mark the current status of the site
           </div>
         </v-card-text>
+        <div v-if="location.type === 'glass'">
+          <v-divider class="purple"></v-divider>
+        </div>
+        <div v-else>
+          <v-divider class="orange"></v-divider>
+        </div>
         <v-card-actions class="justify-center">
-          <v-btn raised color="green" @click="submit('Empty'), (dialog.value = false)">{{
-            status[0]
-          }}</v-btn>
-          <v-btn color="light-green" @click="submit('25% Full'), (dialog.value = false)">{{
-            status[1]
-          }}</v-btn>
-          <v-btn color="yellow" @click="submit('50% Full'), (dialog.value = false)">{{
-            status[2]
-          }}</v-btn>
-          <v-btn color="orange" @click="submit('75% Full'), (dialog.value = false)">{{
-            status[3]
-          }}</v-btn>
+          <v-btn
+            raised
+            color="green"
+            @click="submit('Empty'), (dialog.value = false)"
+            >{{ status[0] }}</v-btn
+          >
+          <v-btn
+            color="light-green"
+            @click="submit('25% Full'), (dialog.value = false)"
+            >{{ status[1] }}</v-btn
+          >
+          <v-btn
+            color="yellow"
+            @click="submit('50% Full'), (dialog.value = false)"
+            >{{ status[2] }}</v-btn
+          >
+          <v-btn
+            color="orange"
+            @click="submit('75% Full'), (dialog.value = false)"
+            >{{ status[3] }}</v-btn
+          >
           <v-btn color="red" @click="submit('Full'), (dialog.value = false)">{{
             status[4]
           }}</v-btn>
@@ -71,16 +80,13 @@ export default {
   },
   methods: {
     submit: function (status) {
-        var dbType = ''
-        if(this.location.type === 'full'){
-            dbType = "fullSites"
-        }
-        if(this.location.type === 'styro'){
-            dbType = "styroSites"
-        }
-        if(this.location.type === 'glass'){
-            dbType = "glassSites"
-        }
+      var dbType = "";
+      if (this.location.type === "styro") {
+        dbType = "styroSites";
+      }
+      if (this.location.type === "glass") {
+        dbType = "glassSites";
+      }
       const docRef = doc(db, dbType, this.location.id);
       updateDoc(docRef, {
         status: status,
@@ -94,8 +100,15 @@ export default {
 </script>
 
 <style>
+.v-divider {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+  border-width: 2px 0 0 0;
+}
+
 @media screen and (max-width: 599px) {
-  .v-dialog{
+  .v-dialog {
     margin: 0;
   }
 }
