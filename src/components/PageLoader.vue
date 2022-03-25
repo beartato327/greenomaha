@@ -1,6 +1,6 @@
 <template>
   <div class="page-loader" v-if="!isloaded">
-      <h2>Loading...</h2>
+      <h2>Greener Omaha</h2>
       <div class="lds-ring">
         <div></div>
         <div></div>
