@@ -31,7 +31,7 @@ export default {
 </script>
 <style scoped>
 #container {
-  min-height: 100vh; /* will cover the 100% of viewport */
+/*   min-height: 100vh; /* will cover the 100% of viewport */
   overflow: hidden;
   display: block;
   position: relative;

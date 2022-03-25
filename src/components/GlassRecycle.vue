@@ -1,4 +1,5 @@
 <template>
+<v-expansion-panels class="pa-0 mt-1">
   <v-expansion-panel>
     <v-expansion-panel-header id="glass-exp-panel" class="text-h5 purple--text"
       >Glass Recycling<v-icon class="pl-2" color="purple"
@@ -37,6 +38,7 @@
       </v-card>
     </v-expansion-panel-content>
   </v-expansion-panel>
+</v-expansion-panels>
 </template>
 
 <script>

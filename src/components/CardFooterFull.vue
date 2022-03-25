@@ -32,25 +32,26 @@
           </div>
         </v-card-text>
         <div class="text-center pb-5">
-          <p>Recycle Container</p>
+          <p class="primary white--text">Recycle Container</p>
           <v-btn-toggle
             v-for="(number, x) in location.recycleBins"
             :key="x"
             v-model="toggle_recycle_none"
           >
-            <v-btn @click="recycleToggle(x)" :value="x"> {{ x }} </v-btn>
+            <v-btn id="recycle-btn" class="pa-0 mx-1" color="primary" @click="recycleToggle(x)" :value="x"> {{ x }} </v-btn>
           </v-btn-toggle>
         </div>
         <div class="text-center pb-5">
-          <p>Glass Container</p>
+          <p class="purple white--text">Glass Container</p>
           <v-btn-toggle
             v-for="(bin, y) in location.glassBins"
             :key="y"
             v-model="toggle_glass_none"
           >
-            <v-btn @click="recycleToggle(y)" :value="y"> {{ parseInt(y) / 10 }} </v-btn>
+            <v-btn id="glass-btn" class="pa-0 mx-1 purple white--text" @click="recycleToggle(y)" :value="y"> {{ parseInt(y) / 10 }} </v-btn>
           </v-btn-toggle>
         </div>
+        <v-divider class="purple"></v-divider>
         <v-card-actions class="justify-center pb-4">
           <v-btn
             raised
@@ -161,6 +162,12 @@ export default {
 </script>
 
 <style>
+.v-btn-toggle > .v-btn.v-btn--active{
+  background-color: #0d6efd !important;
+  color: white !important;
+  opacity: .75;
+}
+
 @media screen and (max-width: 599px) {
   .v-dialog{
     margin: 0;

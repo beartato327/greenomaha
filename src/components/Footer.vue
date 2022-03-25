@@ -1,5 +1,5 @@
 <template>
-  <v-footer id="footer" elevation="6" color="primary">
+  <v-footer id="footer" elevation="12" absolute color="primary">
     <v-row justify="center" no-gutters>
       <v-btn
         color="white"
@@ -65,8 +65,8 @@ export default {
 
 <style>
 #footer {
-  position: absolute;
-  bottom: 0;
+/*   position: absolute;
+ */  bottom: 0;
   width: 100%;
 }
 </style>
