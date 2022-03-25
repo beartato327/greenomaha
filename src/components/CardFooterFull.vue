@@ -1,5 +1,9 @@
 <template>
-  <v-dialog transition="dialog-bottom-transition" max-width="600">
+  <v-dialog
+    v-model="show"
+    transition="dialog-bottom-transition"
+    max-width="600"
+  >
     <template v-slot:activator="{ on, attrs }">
       <div v-if="location.type === 'glass'">
         <v-btn text color="purple" v-bind="attrs" v-on="on"
@@ -38,7 +42,15 @@
             :key="x"
             v-model="toggle_recycle_none"
           >
-            <v-btn id="recycle-btn" class="pa-0 mx-1" color="primary" @click="recycleToggle(x)" :value="x"> {{ x }} </v-btn>
+            <v-btn
+              id="recycle-btn"
+              class="pa-0 mx-1"
+              color="primary"
+              @click="recycleToggle(x)"
+              :value="x"
+            >
+              {{ x }}
+            </v-btn>
           </v-btn-toggle>
         </div>
         <div class="text-center pb-5">
@@ -48,7 +60,14 @@
             :key="y"
             v-model="toggle_glass_none"
           >
-            <v-btn id="glass-btn" class="pa-0 mx-1 purple white--text" @click="recycleToggle(y)" :value="y"> {{ parseInt(y) / 10 }} </v-btn>
+            <v-btn
+              id="glass-btn"
+              class="pa-0 mx-1 purple white--text"
+              @click="recycleToggle(y)"
+              :value="y"
+            >
+              {{ parseInt(y) / 10 }}
+            </v-btn>
           </v-btn-toggle>
         </div>
         <v-divider class="purple"></v-divider>
@@ -97,6 +116,7 @@ export default {
   data() {
     return {
       status: ["Empty", "25%", "50%", "75%", "Full"],
+      show: false,
       toggle_recycle_none: null,
       toggle_glass_none: null,
     };
@@ -107,14 +127,22 @@ export default {
   created() {
     console.log(this.location);
   },
+  watch: {
+    show: function (newValue) {
+      if (!newValue) {
+        this.toggle_recycle_none = null;
+        this.toggle_glass_none = null;
+      }
+    },
+  },
   methods: {
-    recycleToggle: function(val){
-      if(parseInt(val) < 10){
+    recycleToggle: function (val) {
+      if (parseInt(val) < 10) {
         this.toggle_recycle_none = val;
         this.toggle_glass_none = null;
-      }else{
+      } else {
         this.toggle_recycle_none = null;
-      this.toggle_glass_none = val;
+        this.toggle_glass_none = val;
       }
     },
     submit: function (status) {
@@ -162,14 +190,14 @@ export default {
 </script>
 
 <style>
-.v-btn-toggle > .v-btn.v-btn--active{
+.v-btn-toggle > .v-btn.v-btn--active {
   background-color: #0d6efd !important;
   color: white !important;
-  opacity: .75;
+  opacity: 0.75;
 }
 
 @media screen and (max-width: 599px) {
-  .v-dialog{
+  .v-dialog {
     margin: 0;
   }
 }
