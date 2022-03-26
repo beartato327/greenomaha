@@ -243,6 +243,9 @@ export default {
       if (!newValue) {
         this.toggle_recycle_none = null;
         this.toggle_glass_none = null;
+        this.transExp = false;
+        this.alertSelection = false;
+        this.alert = false;
       }
     },
   },

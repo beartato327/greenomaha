@@ -143,6 +143,13 @@ export default {
       status: ["Empty", "25%", "50%", "75%", "Full"],
     };
   },
+  watch:{
+    dialog: function(newValue){
+      if(!newValue){
+        this.alert = false;
+      }
+    }
+  },
   props: {
     location: { type: Object },
   },
