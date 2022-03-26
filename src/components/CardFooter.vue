@@ -86,7 +86,7 @@
         <div v-else>
           <v-toolbar color="orange" dark>Update Location Status</v-toolbar>
         </div>
-        <v-expand-transition v-model="alert">
+        <v-expand-transition>
         <v-alert v-show="alert"
           transition="expand-transition"
           border="bottom"

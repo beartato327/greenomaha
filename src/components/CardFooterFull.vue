@@ -124,7 +124,7 @@
         <div>
           <v-toolbar color="primary" dark>Update Location Status</v-toolbar>
         </div>
-        <v-expand-transition v-model="transExp">
+        <v-expand-transition>
           <v-alert
             v-show="alert"
             transition="expand-transition"
@@ -139,7 +139,7 @@
             this message in error please contact us, thank you.</v-alert
           >
         </v-expand-transition>
-        <v-expand-transition v-model="transExp">
+        <v-expand-transition>
           <v-alert
             v-show="alertSelection"
             transition="expand-transition"
