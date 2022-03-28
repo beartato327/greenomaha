@@ -60,7 +60,7 @@
                     <v-list-item three-line>
                       <v-list-item-content>
                         <v-list-item-title class="text-body-2"
-                          >Bin Number: {{ parseInt(x) / 10 }}</v-list-item-title
+                          >Bin Number: {{ parseInt(x) / 100 }}</v-list-item-title
                         >
                         <v-list-item-subtitle>
                           Status: {{ bin.status }}
