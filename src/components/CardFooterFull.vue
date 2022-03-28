@@ -167,7 +167,7 @@
           >
             <v-btn
               id="recycle-btn"
-              class="pa-0 mx-1"
+              class="pa-0 mx-1 mt-1"
               color="primary"
               @click="recycleToggle(x)"
               :value="x"
@@ -189,7 +189,7 @@
               @click="recycleToggle(y)"
               :value="y"
             >
-              {{ parseInt(y) / 10 }}
+              {{ parseInt(y) / 100 }}
             </v-btn>
           </v-btn-toggle>
         </div>
@@ -235,9 +235,6 @@ export default {
   props: {
     location: { type: Object },
   },
-  created() {
-    console.log(this.location);
-  },
   watch: {
     dialog: function (newValue) {
       if (!newValue) {
@@ -251,7 +248,7 @@ export default {
   },
   methods: {
     recycleToggle: function (val) {
-      if (parseInt(val) < 10) {
+      if (parseInt(val) < 20) {
         this.toggle_recycle_none = val;
         this.toggle_glass_none = null;
       } else {
@@ -263,7 +260,6 @@ export default {
       const currentTime = Date.now();
 
       if (this.toggle_recycle_none == null && this.toggle_glass_none == null) {
-        console.log("MAKE SELECTION");
         this.transExp = true;
         this.alertSelection = true;
         setTimeout(() => {
@@ -277,16 +273,12 @@ export default {
               this.toggle_recycle_none
             ].reported.toMillis();
           if (currentTime - reportedTime > 900000) {
-            console.log("recycle toggle: ", this.toggle_recycle_none);
-            console.log("glass toggle: ", this.toggle_glass_none);
             const docRef = doc(db, "fullSites", this.location.id);
-            console.log("this works: ", this.location);
             updateDoc(docRef, {
               ["recycleBins." + this.toggle_recycle_none + ".status"]: status,
               ["recycleBins." + this.toggle_recycle_none + ".reported"]:
                 serverTimestamp(),
             }).then(() => {
-              console.log(status);
             });
             this.dialog = false;
           } else {
@@ -301,15 +293,12 @@ export default {
           const reportedTime =
             this.location.glassBins[this.toggle_glass_none].reported.toMillis();
           if (currentTime - reportedTime > 900000) {
-            console.log(this.toggle_glass_none);
             const docRef = doc(db, "fullSites", this.location.id);
-            console.log("this works: ", this.location);
             updateDoc(docRef, {
               ["glassBins." + this.toggle_glass_none + ".status"]: status,
               ["glassBins." + this.toggle_glass_none + ".reported"]:
                 serverTimestamp(),
             }).then(() => {
-              console.log(status);
             });
             this.dialog = false;
           } else {
