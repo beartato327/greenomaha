@@ -102,7 +102,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .v-divider {
   margin-left: auto;
   margin-right: auto;
