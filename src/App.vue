@@ -33,6 +33,10 @@ export default {
 };
 </script>
 <style scoped>
+.v-main{
+  background-color: #AED581;
+  background-image: linear-gradient(to bottom right, #AED581, white);
+}
 #container {
 /*   min-height: 100vh; /* will cover the 100% of viewport */
   overflow: hidden;

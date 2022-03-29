@@ -111,7 +111,7 @@
         <div v-else>
           <v-divider class="orange"></v-divider>
         </div>
-        <v-card-actions class="justify-center">
+        <v-card-actions class="justify-center mt-4">
           <v-btn raised color="green" @click="submit('Empty')">{{
             status[0]
           }}</v-btn>
@@ -183,7 +183,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .v-divider {
   margin-left: auto;
   margin-right: auto;
