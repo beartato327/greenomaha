@@ -59,6 +59,7 @@
                     <v-card-actions>
                       <CardFooterFullRecycle v-bind:location="[location, x]" />
                     </v-card-actions>
+                  <v-divider id="div" class="primary"></v-divider>
                   </div>
                   <br />
                   <div class="blue--text"><strong><em>Closest to the entrance is the first bin</em></strong></div>
@@ -93,6 +94,7 @@
                     <v-card-actions>
                       <CardFooterFullGlass v-bind:location="[location, x]" />
                     </v-card-actions>
+                    <v-divider float-left id="div" class="purple"></v-divider>
                   </div>
                 </v-card-text>
               </v-card>
@@ -140,6 +142,11 @@ export default {
 </script>
 
 <style scoped>
+#div{
+  width: 75%;
+  margin-left: 0;
+}
+
 #recycle-exp-panel:hover {
   background-color: #e8f5e9;
 }
@@ -149,6 +156,11 @@ export default {
 }
 
 @media screen and (min-width: 600px) {
+  #div{
+  width: 50%;
+  margin-left: 0;
+}
+
   .v-expansion-panel {
     max-width: 66.66%;
   }
