@@ -15,7 +15,7 @@
           <v-toolbar-title class="flex text-center">About Green Omaha</v-toolbar-title>
         </v-toolbar>
         <v-card-text class="text-subtitle-1 pt-5">
-            Green Omaha is a community drive application to allow people to report
+            Greener Omaha is a community-driven application to allow people to report
             the status of recycling sites around the Greater Omaha Area. Together we
             can reduce overfilled dumpsters littering our beautiful city and help each
             other save time and gas from driving around hoping the site is not full.
@@ -27,6 +27,7 @@
             <ul>
                 <li>Automated emails to the city when bins are reported 75% or higer</li>
                 <li>Provide accessbility features to the site</li>
+                <li>Mobile app for iOS and Android</li>
             </ul>
         </v-card-text>
       </v-card>
