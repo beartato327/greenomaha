@@ -1,7 +1,7 @@
 <template>
   <v-card>
         <v-card-title class="text-h6 orange--text"
-          >Learn more about the Hefty Energy Bag Program<v-icon color="orange"
+          >Learn more about the Hefty Energy Bag Program<v-icon class="mt-0" color="orange"
             >mdi-lightning-bolt</v-icon
           ></v-card-title
         >
@@ -15,7 +15,7 @@
           >. To see more information about the program visit Hefty's website below.
         </v-card-text>
         <v-card-actions> 
-            <v-btn raised class="white--text" href="https://www.hefty.com/products/hefty-energybag/how-energybag-program-works" color="orange">Hefty <v-icon small>mdi-lightning-bolt</v-icon></v-btn>
+            <v-btn raised class="white--text" href="https://www.hefty.com/products/hefty-energybag/how-energybag-program-works" color="orange">Hefty <v-icon class="mt-0" small>mdi-lightning-bolt</v-icon></v-btn>
         </v-card-actions>
       </v-card>
 </template>

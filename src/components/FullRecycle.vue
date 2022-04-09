@@ -11,7 +11,11 @@
       <v-expansion-panel-content>
         <Hefty />
         <v-expansion-panels>
-          <v-expansion-panel id="child-panel" v-for="(location, i) in fullSites" :key="i">
+          <v-expansion-panel
+            id="child-panel"
+            v-for="(location, i) in fullSites"
+            :key="i"
+          >
             <v-expansion-panel-header class="text-h6 green--text">{{
               location.site
             }}</v-expansion-panel-header>
@@ -24,8 +28,8 @@
                 <v-card-text>
                   <div>Description: {{ location.description }}</div>
                   <br />
-                  <div>Closest to the entrance is the first bin</div>
-                  <div class="text-subtitle-2">Recycle Bins:</div>
+                  <div class="blue--text"><strong><em>Closest to the entrance is the first bin</em></strong></div>
+                  <div class="text-subtitle-2 green--text">Recycle Bins:</div>
                   <div v-for="(number, x) in location.recycleBins" :key="x">
                     <v-list-item three-line>
                       <v-list-item-content>
@@ -52,15 +56,20 @@
                         </v-list-item-subtitle>
                       </v-list-item-content>
                     </v-list-item>
+                    <v-card-actions>
+                      <CardFooterFullRecycle v-bind:location="[location, x]" />
+                    </v-card-actions>
+                  <v-divider id="div" class="primary"></v-divider>
                   </div>
                   <br />
-                  <div>Closest to the entrance is the first bin</div>
-                  <div class="text-subtitle-2">Glass Bins:</div>
+                  <div class="blue--text"><strong><em>Closest to the entrance is the first bin</em></strong></div>
+                  <div class="text-subtitle-2 purple--text">Glass Bins:</div>
                   <div v-for="(bin, x) in location.glassBins" :key="x">
                     <v-list-item three-line>
                       <v-list-item-content>
                         <v-list-item-title class="text-body-2"
-                          >Bin Number: {{ parseInt(x) / 100 }}</v-list-item-title
+                          >Bin Number:
+                          {{ parseInt(x) / 100 }}</v-list-item-title
                         >
                         <v-list-item-subtitle>
                           Status: {{ bin.status }}
@@ -82,11 +91,12 @@
                         </v-list-item-subtitle>
                       </v-list-item-content>
                     </v-list-item>
+                    <v-card-actions>
+                      <CardFooterFullGlass v-bind:location="[location, x]" />
+                    </v-card-actions>
+                    <v-divider float-left id="div" class="purple"></v-divider>
                   </div>
                 </v-card-text>
-                <v-card-actions>
-                  <CardFooterFull v-bind:location="location" />
-                </v-card-actions>
               </v-card>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -99,12 +109,14 @@
 <script>
 import { db } from "../firebase/db";
 import { collection, onSnapshot } from "firebase/firestore";
-import CardFooterFull from "./CardFooterFull.vue";
+import CardFooterFullRecycle from "./CardFooterFullRecycle.vue";
+import CardFooterFullGlass from "./CardFooterFullGlass.vue";
 import Hefty from "./Hefty.vue";
 
 export default {
   components: {
-    CardFooterFull,
+    CardFooterFullRecycle,
+    CardFooterFullGlass,
     Hefty,
   },
   props: {
@@ -130,15 +142,25 @@ export default {
 </script>
 
 <style scoped>
+#div{
+  width: 75%;
+  margin-left: 0;
+}
+
 #recycle-exp-panel:hover {
   background-color: #e8f5e9;
 }
 
 #child-panel {
-    max-width: 100% !important;
+  max-width: 100% !important;
 }
 
 @media screen and (min-width: 600px) {
+  #div{
+  width: 50%;
+  margin-left: 0;
+}
+
   .v-expansion-panel {
     max-width: 66.66%;
   }

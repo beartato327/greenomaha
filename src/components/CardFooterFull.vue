@@ -317,7 +317,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .v-divider {
   margin-left: auto;
   margin-right: auto;

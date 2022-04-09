@@ -27,6 +27,7 @@ export default {
 </script>
 
 <style>
+
 .v-expansion-panels {
   margin-top: 20px;
 }
