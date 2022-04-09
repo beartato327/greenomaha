@@ -18,14 +18,14 @@
         <v-card-text>
           <div>Description: {{ location.description }}</div>
           <div v-if="location.reported === null">
-            Status; Loading...
+            Status: Loading...
           </div>
           <div v-else>Status: {{ location.status }}</div>
           <div v-if="location.reported === null">
-            Last reported: Loading...
+            Last Reported At: Loading...
           </div>
           <div v-else>
-            Last reported:
+            Last Reported At:
             {{
               location.reported.toDate().toLocaleDateString([], {
                 month: "numeric",

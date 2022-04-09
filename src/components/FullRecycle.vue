@@ -36,12 +36,17 @@
                         <v-list-item-title class="text-body-2"
                           >Bin Number: {{ x }}</v-list-item-title
                         >
-                        <v-list-item-subtitle>
-                          Status: {{ number.status }}
+                        <v-list-item-subtitle v-if="number.reported === null">
+                          Status: Loading...
+                        </v-list-item-subtitle>
+                        <v-list-item-subtitle v-else>
+                          Status:  {{ number.status }}
                         </v-list-item-subtitle>
                         <v-list-item-subtitle
                           v-if="number.reported === null"
-                        ></v-list-item-subtitle>
+                        >
+                        Last Reported At: Loading...
+                        </v-list-item-subtitle>
                         <v-list-item-subtitle v-else>
                           Last Reported At:
                           {{
@@ -71,12 +76,17 @@
                           >Bin Number:
                           {{ parseInt(x) / 100 }}</v-list-item-title
                         >
-                        <v-list-item-subtitle>
+                        <v-list-item-subtitle  v-if="bin.reported === null">
+                          Status: Loading...
+                        </v-list-item-subtitle>
+                        <v-list-item-subtitle v-else>
                           Status: {{ bin.status }}
                         </v-list-item-subtitle>
                         <v-list-item-subtitle
                           v-if="bin.reported === null"
-                        ></v-list-item-subtitle>
+                        >
+                        Last Reported At: Loading...
+                        </v-list-item-subtitle>
                         <v-list-item-subtitle v-else>
                           Last Reported At:
                           {{
