@@ -2,7 +2,7 @@
 <v-expansion-panels class="pa-0 mt-1">
   <v-expansion-panel>
     <v-expansion-panel-header id="styro-exp-panel" class="text-h5 orange--text"
-      >Styrofoam Recycling<v-icon class="pl-2" color="orange"
+      >Styrofoam Recycling<v-icon class="pl-2 ma-0" color="orange"
         >mdi-food-takeout-box</v-icon
       ></v-expansion-panel-header
     >
@@ -83,7 +83,7 @@ export default {
   background-color: #FFF3E0;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 960px) {
   .v-expansion-panel {
     max-width: 66.66%;
   }

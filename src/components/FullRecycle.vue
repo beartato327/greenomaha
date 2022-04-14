@@ -4,7 +4,7 @@
       <v-expansion-panel-header
         id="recycle-exp-panel"
         class="text-h5 green--text"
-        >Full Service Recycling<v-icon class="pl-2" color="green"
+        >Full Service Recycling<v-icon class="pl-2 ma-0" color="green"
           >mdi-recycle</v-icon
         ></v-expansion-panel-header
       >
@@ -165,7 +165,7 @@ export default {
   max-width: 100% !important;
 }
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 960px) {
   #div{
   width: 50%;
   margin-left: 0;
