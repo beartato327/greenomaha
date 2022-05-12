@@ -20,8 +20,8 @@ exports.sendEmail = functions.https.onRequest((req, res) => {
   const name = req.query.name;
 
   const mailOptions = {
-    from: "Greener Omaha <support@greeneromaha.com>",
-    to: "support@greeneromaha.com",
+    from: "Greener Omaha Support <recapurro@outlook.com>",
+    to: "recapurro327@gmail.com",
     subject: "Comment",
     html: `
     <h3>Comment:</h3>
